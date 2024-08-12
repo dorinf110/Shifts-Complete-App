@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+<div id="large">
+    <div *ngIf="hasUsers" id="table" class="mat-elevation-z3">
+    <!-- <div id="table" class="mat-elevation-z3"> -->
+        
+        <h2>All Users:</h2>
+        <div width="100%" id="form">
+            <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="firstName">
+                <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+                <mat-cell *matCellDef="let user">{{user.firstName}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="lastName">
+                <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+                <mat-cell *matCellDef="let user">{{user.lastName}}</mat-cell>
+            </ng-container>
+            <!-- <ng-container matColumnDef="birthDate">
+                <mat-header-cell *matHeaderCellDef>Birthdate</mat-header-cell>
+                <mat-cell *matCellDef="let user">{{user.birthDate | date: "dd/MM/yyyy"}}</mat-cell>
+            </ng-container> -->
+            <!-- <ng-container matColumnDef="password">
+                <mat-header-cell *matHeaderCellDef>Password</mat-header-cell>
+                <mat-cell *matCellDef="let user">{{user.password }}</mat-cell>
+            </ng-container> -->
+            <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+                <mat-cell *matCellDef="let user">{{user.email}}</mat-cell>
+            </ng-container>  
+            <ng-container matColumnDef="Action">
+                <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+                <mat-cell *matCellDef="let user"><button mat-raised-button id="reg_btn" color="primary" (click)="delete(user)" type="submit">Delete</button></mat-cell>
+            </ng-container>  
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row  *matRowDef="let row; columns: displayedColumns;"></mat-row>
+           <!--(click)="clickUserRow(row)"  -->
+        </table>
+        </div>
+     </div>
